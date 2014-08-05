@@ -1,0 +1,49 @@
+﻿<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>EVIL API</h1>
+                <h2>Stealing your secrets!</h2>
+            </hgroup>
+            <p>
+                Stealing your secrets!
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h3>H4X0rZ Come Here for free credit card numbers:</h3>
+        <ol class="round">
+            <li class="one">
+                <h5>Relay Requests!</h5>
+                Clients don't even know we're evil!
+            </li>
+        </ol>
+        <p id="data">
+
+        </p>
+    </section>
+    
+</div>
+@*This is to read and display the intercepted data.*@
+@section scripts {
+<script type="text/javascript">
+    var uri = 'api/contact';
+
+    $(document).ready(function () {
+        // Send an AJAX request
+        $.getJSON(uri)
+            .done(function (data) {
+                // On success, 'data' contains a list of products.
+                $.each(data, function (key, item) {
+                    // Add a list item for the product.
+                    $('<li>', { text: formatItem(item) }).appendTo($('#data'));
+                });
+            });
+    });
+    function formatItem(item) {
+        return item.Name + ': ' + item.CreditCardNumber;
+    }
+
+
+</script>
+}
